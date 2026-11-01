@@ -1,0 +1,44 @@
+name: Publish existing English release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-existing-en-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify uploaded installer and publish the existing draft
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const {owner, repo} = context.repo;
+            const release_id = 430695256;
+            const {data: release} = await github.rest.repos.getRelease({owner, repo, release_id});
+            const expected = 'MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup.zip';
+            if (!release.draft) {
+              core.notice('Release has already been published; no changes made.');
+              return;
+            }
+            const asset = release.assets.find(a => a.name === expected);
+            if (!asset || asset.state !== 'uploaded' || asset.size < 300000000) {
+              core.setFailed('Expected completed installer archive not found. Nothing was published.');
+              return;
+            }
+            await github.rest.repos.updateRelease({
+              owner, repo, release_id,
+              tag_name: 'v1.14.4',
+              target_commitish: 'main',
+              name: 'MELNIKOV MUSIC PLAYER — Classic Edition EN v1.14.4',
+              draft: false,
+              prerelease: false,
+              make_latest: 'true'
+            });
+            core.notice('Published original release with existing ZIP: ' + release_id);
