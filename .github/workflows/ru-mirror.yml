@@ -17,7 +17,7 @@ jobs:
           DRIVE_ID: 1EtYHKDkqFkNe4TJ9PLIP1ew702H9gg1q
         run: |
           python -m pip install --quiet gdown
-          gdown --id "$DRIVE_ID" -O MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip
+          gdown "https://drive.google.com/uc?id=$DRIVE_ID" -O MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip
           python - <<'PYTHON'
           import os, zipfile
           p = "MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip"
