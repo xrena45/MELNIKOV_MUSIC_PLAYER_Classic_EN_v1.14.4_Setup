@@ -1,0 +1,36 @@
+name: Mirror Russian installer
+on:
+  push:
+    paths:
+      - .github/workflows/ru-mirror.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download and verify Russian ZIP
+        env:
+          DRIVE_ID: 1EtYHKDkqFkNe4TJ9PLIP1ew702H9gg1q
+        run: |
+          python -m pip install --quiet gdown
+          gdown --id "$DRIVE_ID" -O MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip
+          python - <<'PYTHON'
+          import os, zipfile
+          p = "MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip"
+          assert os.path.getsize(p) == 318076263, "Unexpected archive size; not publishing"
+          assert zipfile.is_zipfile(p), "Invalid ZIP; not publishing"
+          print("Verified Russian installer ZIP for mirror.")
+          PYTHON
+      - name: Publish simple RU mirror release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ru-v1.14.2 MELNIKOV_MUSIC_PLAYER_Classic_RU_v1.14.2_Setup.zip \
+            --repo "$GITHUB_REPOSITORY" --target main \
+            --title "MELNIKOV MUSIC PLAYER Classic RU v1.14.2" \
+            --notes "Russian download mirror. Official page: https://melnikovmusic.online/ru_freeplayer" \
+            --latest=false
