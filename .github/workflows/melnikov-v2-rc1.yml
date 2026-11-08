@@ -23,8 +23,9 @@ jobs:
       - name: Install GStreamer 1.28.8 MSVC x86_64
         shell: powershell
         run: |
-          $url='https://gstreamer.freedesktop.org/data/pkg/windows/1.28.8/msvc/gstreamer-1.0-msvc-x86_64-1.28.8.exe'
-          curl.exe -L --fail --retry 3 --output gst.exe $url\n          Get-Item gst.exe | Format-List Length,FullName
+          $url='https://gstreamer.freedesktop.org/pkg/windows/1.28.8/msvc/gstreamer-1.0-msvc-x86_64-1.28.8.exe'
+          curl.exe -L --fail --retry 3 --output gst.exe $url
+          Get-Item gst.exe | Format-List Length,FullName
           Start-Process -FilePath .\gst.exe -ArgumentList '/TYPE=devel','/VERYSILENT','/NORESTART','/CURRENTUSER','/DIR=C:\gstreamer\1.0\msvc_x86_64' -Wait
           $gst='C:\gstreamer\1.0\msvc_x86_64'
           "$gst\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
