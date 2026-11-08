@@ -20,30 +20,31 @@ jobs:
           rustup default 1.99.1-x86_64-pc-windows-msvc
           rustc -V
           cargo -V
-      - name: Install GStreamer 1.28.8 bundle for CI
+      - name: Install GStreamer 1.28 bundle for CI
         shell: powershell
         run: |
           py -m pip install --disable-pip-version-check --no-input "gstreamer_libs==1.28.8" "gstreamer_cli==1.28.8" "gstreamer_plugins==1.28.7"
           if ($LASTEXITCODE -ne 0) { throw 'GStreamer Python components install failed' }
+          choco install pkgconfiglite -y --no-progress
+          if ($LASTEXITCODE -ne 0) { throw 'pkg-config install failed' }
           $pyPrefix=(py -c "import sys; print(sys.prefix)").Trim()
           Write-Host "Python prefix: $pyPrefix"
-          $pkg=(Get-ChildItem -Path $pyPrefix -Recurse -Filter pkg-config.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
-          if (-not $pkg) { throw 'pkg-config.exe not found in gstreamer-bundle' }
-          $bin=Split-Path $pkg -Parent
-          $root=Split-Path $bin -Parent
-          $pc=(Get-ChildItem -Path $root -Recurse -Filter gstreamer-1.0.pc -ErrorAction SilentlyContinue | Select-Object -First 1).DirectoryName
-          if (-not $pc) { throw 'gstreamer-1.0.pc not found in gstreamer-bundle' }
-          Write-Host "GStreamer root: $root"
-          Write-Host "pkg-config: $pkg"
+          $pcFile=(Get-ChildItem -Path $pyPrefix -Recurse -Filter gstreamer-1.0.pc -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+          if (-not $pcFile) { throw 'gstreamer-1.0.pc not found in installed GStreamer components' }
+          $pc=Split-Path $pcFile -Parent
+          $gstDll=(Get-ChildItem -Path $pyPrefix -Recurse -Filter gstreamer-1.0-0.dll -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+          if (-not $gstDll) { throw 'gstreamer-1.0-0.dll not found in installed GStreamer components' }
+          $bin=Split-Path $gstDll -Parent
+          Write-Host "GStreamer bin: $bin"
           Write-Host "PKG_CONFIG_PATH: $pc"
           "$bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           "PKG_CONFIG_PATH=$pc" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-          "GSTREAMER_1_0_ROOT_MSVC_X86_64=$root" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           $env:PATH="$bin;$env:PATH"
           $env:PKG_CONFIG_PATH=$pc
+          $pkg=(Get-Command pkg-config.exe -ErrorAction Stop).Source
           & $pkg --modversion gstreamer-1.0
           if ($LASTEXITCODE -ne 0) { throw 'pkg-config cannot resolve gstreamer-1.0' }
-          $gst=(Get-ChildItem -Path $root -Recurse -Filter gst-launch-1.0.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+          $gst=(Get-ChildItem -Path $pyPrefix -Recurse -Filter gst-launch-1.0.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
           if (-not $gst) { throw 'gst-launch-1.0.exe not found' }
           & $gst --version
       - name: Cargo format check
