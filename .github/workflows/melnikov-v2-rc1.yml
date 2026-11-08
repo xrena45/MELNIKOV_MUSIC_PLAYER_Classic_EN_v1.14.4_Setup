@@ -23,8 +23,8 @@ jobs:
       - name: Install GStreamer 1.28.8 bundle for CI
         shell: powershell
         run: |
-          py -m pip install --disable-pip-version-check --no-input "gstreamer-bundle==1.28.8"
-          if ($LASTEXITCODE -ne 0) { throw 'gstreamer-bundle install failed' }
+          py -m pip install --disable-pip-version-check --no-input "gstreamer_libs==1.28.8" "gstreamer_cli==1.28.8" "gstreamer_plugins==1.28.7"
+          if ($LASTEXITCODE -ne 0) { throw 'GStreamer Python components install failed' }
           $pyPrefix=(py -c "import sys; print(sys.prefix)").Trim()
           Write-Host "Python prefix: $pyPrefix"
           $pkg=(Get-ChildItem -Path $pyPrefix -Recurse -Filter pkg-config.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
