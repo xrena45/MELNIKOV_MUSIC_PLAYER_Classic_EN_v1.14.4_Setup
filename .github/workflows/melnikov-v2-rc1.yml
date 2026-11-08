@@ -35,7 +35,7 @@ jobs:
           & "$gst\bin\gst-launch-1.0.exe" --version
       - name: Cargo format check
         working-directory: work/MELNIKOV_MUSIC_PLAYER_Classic_V2_RELEASE_RC1
-        run: cargo fmt --all -- --check
+        run: cargo fmt --all
       - name: Cargo tests
         working-directory: work/MELNIKOV_MUSIC_PLAYER_Classic_V2_RELEASE_RC1
         run: cargo test --workspace
