@@ -55,6 +55,13 @@ jobs:
           & "$gst\bin\pkg-config.exe" --modversion gstreamer-1.0
           if ($LASTEXITCODE -ne 0) { throw 'pkg-config cannot resolve gstreamer-1.0' }
           & "$gst\bin\gst-launch-1.0.exe" --version
+      - name: Save GStreamer 1.28.8 SDK cache
+        if: steps.gst-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: C:\gstreamer\1.0\msvc_x86_64
+          key: gstreamer-1.28.8-devel-msvc-x86_64-v1
+
       - name: Cargo format check
         working-directory: work/MELNIKOV_MUSIC_PLAYER_Classic_V2_RELEASE_RC1
         run: cargo fmt --all
