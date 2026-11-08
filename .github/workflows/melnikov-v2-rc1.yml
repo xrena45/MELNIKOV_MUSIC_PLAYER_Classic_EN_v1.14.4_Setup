@@ -20,19 +20,19 @@ jobs:
           rustup default 1.99.1-x86_64-pc-windows-msvc
           rustc -V
           cargo -V
-      - name: Install GStreamer 1.28.8 MSVC x86_64
+      - name: Install GStreamer Windows SDK for CI
         shell: powershell
         run: |
-          $runtime='https://gstreamer.freedesktop.org/data/pkg/windows/1.28.8/msvc/gstreamer-1.0-msvc-x86_64-1.28.8.msi'
-          $devel='https://gstreamer.freedesktop.org/data/pkg/windows/1.28.8/msvc/gstreamer-1.0-devel-msvc-x86_64-1.28.8.msi'
+          $runtime='https://gstreamer.freedesktop.org/pkg/windows/1.26.8/msvc/gstreamer-1.0-msvc-x86_64-1.26.8.msi'
+          $devel='https://gstreamer.freedesktop.org/pkg/windows/1.26.8/msvc/gstreamer-1.0-devel-msvc-x86_64-1.26.8.msi'
           curl.exe -L --fail --retry 3 --output gst-runtime.msi $runtime
           if ($LASTEXITCODE -ne 0) { throw 'GStreamer runtime download failed' }
           curl.exe -L --fail --retry 3 --output gst-devel.msi $devel
           if ($LASTEXITCODE -ne 0) { throw 'GStreamer devel download failed' }
-          Start-Process msiexec.exe -ArgumentList '/i','gst-runtime.msi','ADDLOCAL=ALL','/qn','/norestart' -Wait -NoNewWindow
-          if ($LASTEXITCODE -ne 0) { throw "GStreamer runtime install failed: $LASTEXITCODE" }
-          Start-Process msiexec.exe -ArgumentList '/i','gst-devel.msi','ADDLOCAL=ALL','/qn','/norestart' -Wait -NoNewWindow
-          if ($LASTEXITCODE -ne 0) { throw "GStreamer devel install failed: $LASTEXITCODE" }
+          $p=Start-Process msiexec.exe -ArgumentList '/i','gst-runtime.msi','ADDLOCAL=ALL','/qn','/norestart' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "GStreamer runtime install failed: $($p.ExitCode)" }
+          $p=Start-Process msiexec.exe -ArgumentList '/i','gst-devel.msi','ADDLOCAL=ALL','/qn','/norestart' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "GStreamer devel install failed: $($p.ExitCode)" }
           $gst=[Environment]::GetEnvironmentVariable('GSTREAMER_1_0_ROOT_MSVC_X86_64','Machine')
           if (-not $gst) { $gst=[Environment]::GetEnvironmentVariable('GSTREAMER_1_0_ROOT_MSVC_X86_64','User') }
           if (-not $gst) {
