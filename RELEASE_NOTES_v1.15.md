@@ -42,10 +42,10 @@ MELNIKOV MUSIC PLAYER Classic Edition is independently developed software for Wi
 
 | Edition | Setup filename | Approx. size |
 |:--|:--|--:|
-| **English** | English Windows installer | 337 MB |
-| **Русский** | Russian Windows installer | 337 MB |
+| **English** | [⬇ MMP_Classic_EN_v1.15_Setup.exe](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/download/v1.15/MMP_Classic_EN_v1.15_Setup.exe) | 337 MB |
+| **Русский** | [⬇ MMP_Classic_RU_v1.15_Setup.exe](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/download/v1.15/MMP_Classic_RU_v1.15_Setup.exe) | 337 MB |
 
-The English and Russian EXE files are independent installers. They have not yet been uploaded as GitHub Release assets. The download links will be added when both packages are uploaded.
+Both Windows installers are uploaded as separate **GitHub Release assets**. Choose the RU or EN version using the direct download links above. The installers include two MELNIKOV MUSIC albums.
 
 ### Visualization: v1.14 versus v1.15
 
