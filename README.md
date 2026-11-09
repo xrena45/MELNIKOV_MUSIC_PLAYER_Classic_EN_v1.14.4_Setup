@@ -26,7 +26,7 @@
 
 **Integrated into Classic v1.15 · Standalone installer for compatible players**
 
-[**Explore the plugin and installer details**](MELNIKOV_VISUALIZATION_PLUGIN_v1.6.md) · [**Read the announcement / Анонс**](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/issues/1)
+[**⬇ MELNIKOV VISUALIZATION v1.6 — DOWNLOAD PAGE / СТРАНИЦА СКАЧИВАНИЯ**](MELNIKOV_VISUALIZATION_PLUGIN_v1.6.md) · [Announcement / Анонс](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/issues/1)
 
 </div>
 
