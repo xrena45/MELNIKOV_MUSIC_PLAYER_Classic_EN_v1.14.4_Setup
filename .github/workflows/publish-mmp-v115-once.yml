@@ -1,0 +1,35 @@
+name: Publish approved MELNIKOV MUSIC PLAYER v1.15 release
+
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-mmp-v115-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v115:
+    if: "github.event.head_commit.message == 'ci: publish approved Classic v1.15 GitHub release'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release notes
+        uses: actions/checkout@v4
+      - name: Validate draft assets and publish approved release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_ID=439763138
+          draft_json="$(gh api "repos/${GH_REPO}/releases/${RELEASE_ID}")"
+          test "$(jq -r .draft <<<"$draft_json")" = "true"
+          for filename in MMP_Classic_EN_v1.15_Setup.exe MMP_Classic_RU_v1.15_Setup.exe; do
+            jq -e --arg filename "$filename" 'any(.assets[]; .name == $filename and .size > 330000000)' <<<"$draft_json"
+          done
+          if ! gh api "repos/${GH_REPO}/git/ref/tags/v1.15" > /dev/null 2>&1; then
+            gh api --method POST "repos/${GH_REPO}/git/refs" -f ref="refs/tags/v1.15" -f sha="$GITHUB_SHA"
+          fi
+          jq -n --arg name 'MELNIKOV MUSIC PLAYER — Classic Edition v1.15' --arg tag_name v1.15 --rawfile body RELEASE_NOTES_v1.15.md '{name:$name,tag_name:$tag_name,body:$body,draft:false,prerelease:false}' > /tmp/release.json
+          gh api --method PATCH "repos/${GH_REPO}/releases/${RELEASE_ID}" --input /tmp/release.json --jq '{name,tag_name,draft,html_url,assets:[.assets[].name]}'
