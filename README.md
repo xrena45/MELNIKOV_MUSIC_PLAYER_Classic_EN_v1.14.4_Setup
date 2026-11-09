@@ -1,16 +1,16 @@
 <div align="center">
 
-### ✨ NEW RELEASE CANDIDATE · MELNIKOV MUSIC PLAYER CLASSIC v1.15 RC1
+### ✨ MELNIKOV MUSIC PLAYER CLASSIC v1.15
 
-<a href="RELEASE_NOTES_v1.15_RC1.md"><img src="assets/releases/v1.15/MELNIKOV_PLAYER_Classic_v1.15_hero.webp" alt="MELNIKOV MUSIC PLAYER Classic v1.15 RC1 — integrated visualization" width="100%"></a>
+<a href="RELEASE_NOTES_v1.15.md"><img src="assets/releases/v1.15/MELNIKOV_PLAYER_Classic_v1.15_hero.webp" alt="MELNIKOV MUSIC PLAYER Classic v1.15 — integrated visualization" width="100%"></a>
 
 **Our own MELNIKOV VISUALIZATION v1.6 is now built into Classic v1.15.**
 
 **490 visual variations · Two music albums included · English & Русский**
 
-**[Explore v1.15 RC1 — visuals, features & release notes](RELEASE_NOTES_v1.15_RC1.md)**
+**[Explore v1.15 — visuals, features & release notes](RELEASE_NOTES_v1.15.md)**
 
-<sub>v1.15 RC1 is a pre-release; the previous stable v1.14 downloads remain available below.</sub>
+<sub>v1.15 GitHub installer downloads will be added separately. Previous v1.14 downloads remain available below.</sub>
 
 </div>
 
