@@ -25,6 +25,25 @@ A **standalone Windows installer** is also being prepared for use with compatibl
 
 <img src="https://raw.githubusercontent.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/main/assets/releases/v1.15/MELNIKOV_VISUALIZATION_plugin_overview.webp" alt="MELNIKOV VISUALIZATION running in MELNIKOV MUSIC PLAYER — standalone modular visual window" width="100%">
 
+## Test environments · Тестовые версии ПО
+
+The following software versions are documented by screenshots supplied for the plugin test setup. These screenshots identify the player versions; **they do not, by themselves, certify successful operation or full compatibility** with this specific installer.
+
+| Application | Version | Platform / architecture |
+|:--|:--|:--|
+| **AIMP** | **5.40.2727** (08 September 2026) | **64-bit**, Windows 11 (build 10.0.26300 shown) |
+| **Winamp** | **5.0** (14 December 2003) | **x86 / 32-bit** |
+
+**Important:** AIMP 64-bit and Winamp x86 are different plugin environments. The installer name specifically references **Winamp / Classic v1.14**. Verify installation and runtime operation separately for each player; AIMP compatibility for this exact Setup.exe is not yet confirmed.
+
+**По-русски:** На предоставленных скриншотах тестовой среды указаны **AIMP 5.40.2727 (64-bit, 08.09.2026)** и **Winamp 5.0 (x86, 14.12.2003)**. В AIMP также отображается Windows 11, сборка 10.0.26300. Эти сведения фиксируют версии ПО, но не заменяют проверку работы плагина в каждой программе.
+
+### Installer checksum · Контрольная сумма
+
+`SHA-256: 76b53d17d1b64402d1a49b03a9badc2e53687be8eae233f6c42b398eb3182118`
+
+File size: **34,314,829 bytes**. Calculated from the original Google Drive installer.
+
 ## Features
 
 - **490 visualization variations** in the v1.6 collection.
