@@ -9,9 +9,9 @@
 
 ### WINDOWS · FREE DOWNLOAD
 
-<a href="https://drive.google.com/file/d/1wc-UMNsBfnj332r2G7PWn1o05FxUzrow/view"><img alt="Download MELNIKOV VISUALIZATION v1.6 for Windows" src="https://img.shields.io/badge/%E2%AC%87%20DOWNLOAD%20PLUGIN%20v1.6-WINDOWS%20SETUP-0A9DDE?style=for-the-badge&labelColor=08213E"></a>
+<a href="https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/download/visualization-v1.6/PLUGIN_MVD_v1.6_DP5_FIX4_WINAMP_CLASSIC14_RC_Setup.exe"><img alt="Download MELNIKOV VISUALIZATION v1.6 for Windows" src="https://img.shields.io/badge/%E2%AC%87%20DOWNLOAD%20PLUGIN%20v1.6-WINDOWS%20SETUP-0A9DDE?style=for-the-badge&labelColor=08213E"></a>
 
-**[⬇ Скачать установщик · Download Windows Setup — 34.3 MB](https://drive.google.com/file/d/1wc-UMNsBfnj332r2G7PWn1o05FxUzrow/view)**
+**[⬇ Скачать установщик · Download Windows Setup — 34.3 MB](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/download/visualization-v1.6/PLUGIN_MVD_v1.6_DP5_FIX4_WINAMP_CLASSIC14_RC_Setup.exe)**
 
 *For Classic v1.14 and Winamp compatibility testing. Already integrated into Classic v1.15.*
 
@@ -47,7 +47,7 @@ MELNIKOV VISUALIZATION v1.6 is **our own music visualization project**, develope
 
 <div align="center">
 
-### [⬇ MELNIKOV VISUALIZATION v1.6 — DOWNLOAD SETUP.EXE](https://drive.google.com/file/d/1wc-UMNsBfnj332r2G7PWn1o05FxUzrow/view)
+### [⬇ MELNIKOV VISUALIZATION v1.6 — DOWNLOAD SETUP.EXE](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/download/visualization-v1.6/PLUGIN_MVD_v1.6_DP5_FIX4_WINAMP_CLASSIC14_RC_Setup.exe)
 
 **34.3 MB · Windows · Standalone plugin installer**
 
@@ -78,11 +78,13 @@ These are **documented test environments**, not a claim of successful verificati
 - **File size:** 34,314,829 bytes.
 - **SHA-256:** `76b53d17d1b64402d1a49b03a9badc2e53687be8eae233f6c42b398eb3182118`
 
-### Distribution notice · О размещении
+### Official GitHub Release · Официальный релиз
 
-The download button currently opens the **Google Drive installer**. A GitHub Release asset has **not** yet been uploaded. For public access, the file owner must enable **Anyone with the link → Viewer** in Google Drive.
+**[View MELNIKOV VISUALIZATION v1.6 on GitHub Releases](https://github.com/xrena45/MELNIKOV_MUSIC_PLAYER_Classic_EN_v1.14.4_Setup/releases/tag/visualization-v1.6)**
 
-Кнопка сейчас открывает установщик на **Google Drive**. Сам EXE пока **не прикреплён к GitHub Releases**. Для скачивания всеми посетителями необходимо включить доступ «Все, у кого есть ссылка → Читатель».
+The Windows installer is hosted directly by **GitHub Releases**. Downloading from Google Drive is not required.
+
+**Установщик размещён непосредственно в GitHub Releases.** Для скачивания переходить на Google Drive не требуется.
 
 ---
 
